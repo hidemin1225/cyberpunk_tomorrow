@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-from sys import stdin
-import sys
-
 def read_mapping(filename):
     import csv
     with open (filename, newline ='', encoding='utf-8') as csvfile:
@@ -24,6 +21,9 @@ def transcode_character(character, mapping_dict):
 
 
 if __name__ == '__main__':
+    import sys
+    from sys import stdin
+
     mapping_file = sys.argv[1]
     mapping_dict = read_mapping(mapping_file)
 
