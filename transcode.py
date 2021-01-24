@@ -23,12 +23,13 @@ def transcode_character(character, mapping_dict):
         return mapping_dict.get(character, character)
 
 
-mapping_file = sys.argv[1]
-mapping_dict = read_mapping(mapping_file)
+if __name__ == '__main__':
+    mapping_file = sys.argv[1]
+    mapping_dict = read_mapping(mapping_file)
 
 
-input_character = None
-while input_character != '':
-    input_character = stdin.read(1)
-    output_character = transcode_character(input_character, mapping_dict)
-    print(output_character, end='')
+    input_character = None
+    while input_character != '':
+        input_character = stdin.read(1)
+        output_character = transcode_character(input_character, mapping_dict)
+        print(output_character, end='')
