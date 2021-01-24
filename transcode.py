@@ -26,6 +26,16 @@ if __name__ == '__main__':
     import random, sys
     from sys import stdin
 
+    if len(sys.argv) != 3:
+        print('''Usage:
+
+./transcode.py [path-to-mapping-csv] [one-in-how-many] < [path-to-input-text-file] > [path-to-output-text-file]
+
+one-in-how-many: if given, say 10, 1 in 10 characters will be transcoded
+
+''')
+        exit(1)
+
     mapping_file = sys.argv[1]
     mapping_dict = read_mapping(mapping_file)
 
