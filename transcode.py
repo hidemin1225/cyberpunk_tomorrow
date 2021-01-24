@@ -19,16 +19,22 @@ def read_mapping(filename):
 def transcode_character(character, mapping_dict):
         return mapping_dict.get(character, character)
 
+def should_transcode(randomness):
+    return random.choices((True, False), weights=(1, randomness - 1))[0]
 
 if __name__ == '__main__':
-    import sys
+    import random, sys
     from sys import stdin
 
     mapping_file = sys.argv[1]
     mapping_dict = read_mapping(mapping_file)
 
+    randomness = int(sys.argv[2])
+
     input_character = None
     while input_character != '':
         input_character = stdin.read(1)
-        output_character = transcode_character(input_character, mapping_dict)
+        output_character = (transcode_character(input_character, mapping_dict)
+                            if should_transcode(randomness)
+                            else input_character)
         print(output_character, end='')
